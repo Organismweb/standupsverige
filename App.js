@@ -28,37 +28,58 @@ export default class App extends Component {
     Moment.locale('sv');
 
     return (
-      <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0, marginTop: 100, padding: 30 }}>
-        <FlatList
-          style={ styles.list }
-          data={ this.state.data }
-          renderItem={({item}) => (
-            <View style={styles.listItemView}>
-              <Text style={ styles.listItemViewText }>{item.title} | {item.date} | {item.price} kr</Text>
-            </View>
-          )}
-        />
-      </List>
+      <View style={ styles.container }>
+        <View style={ styles.header }>
+          <Text style={ styles.heading }>StandApp</Text>
+        </View>
+        <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0, marginTop: 100, padding: 30 }}>
+          <FlatList
+            style={ styles.list }
+            data={ this.state.data }
+            renderItem={({item}) => (
+              <View style={styles.listItemView}>
+                <Text style={ styles.listItemViewText }>{item.title} | {item.date} | {item.price} kr</Text>
+              </View>
+            )}
+          />
+        </List>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row'
+  },
+  header: {
+    marginTop: 100,
+    height: 100,
+    backgroundColor: "black",
+    width: "100%",
+    paddingLeft: 30,
+    justifyContent: 'center',
+  },
+  select: {
+    fontSize: 20,
+    marginTop: 30,
+    color: "yellow"
+  },
+  heading: {
+    fontSize: 24,
+    marginTop: 30,
+    color: "white"
   },
   list: {
     paddingLeft: 20,
     borderLeftColor: "yellow",
-    borderLeftWidth: 5
+    borderLeftWidth: 5,
   },
   listItemView: {
     flexDirection: 'row',
-    marginTop: 15
+    marginBottom: 15
   },
   listItemViewText: {
     fontSize: 18
